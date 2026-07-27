@@ -46,7 +46,7 @@ export function Header() {
                 to="/news" 
                 className={cn("text-xs font-bold uppercase tracking-widest hover:text-success transition-colors", location.pathname === '/news' ? 'text-success' : 'text-slate-300')}
               >
-                Economy
+                News Feed
               </Link>
               <Link 
                 to="/sectors/gaming" 

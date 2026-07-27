@@ -115,13 +115,12 @@ export function Sectors() {
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                    Learn how the Platinum Entertainment portfolio leverages premium hospitality licensing to provide consistent cash flow in volatile macro conditions.
                 </p>
-                <a 
-                  href="https://platinum-casino.example.org" 
-                  target="_blank"
+                <Link 
+                  to="/pro"
                   className="w-full bg-success text-white py-3 rounded-xl font-bold text-sm hover:bg-success/90 transition-all flex items-center justify-center gap-2 group"
                 >
                   Explore Strategic Assets <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                </a>
+                </Link>
               </div>
               <div className="absolute bottom-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
                  <ShieldCheck size={180} />

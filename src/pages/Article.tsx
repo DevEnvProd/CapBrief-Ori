@@ -1,14 +1,28 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { NEWS_DATA, CATEGORIES } from '../data/mock';
+import { WINBOX_NEWS } from '../data/winboxNews';
 import { formatDate } from '../lib/utils';
-import { ArrowLeft, Clock, Share2, Bookmark, MessageSquare, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, Share2, Bookmark, MessageSquare, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function Article() {
   const { slug } = useParams();
-  const article = NEWS_DATA.find((a) => a.slug === slug);
+  
+  // Combine all articles for searching
+  const allArticles = [...NEWS_DATA, ...WINBOX_NEWS];
+  const article = allArticles.find((a) => a.slug === slug);
 
   if (!article) return <Navigate to="/" />;
+
+  // Get trending articles from same category
+  const trendingArticles = allArticles
+    .filter(a => a.id !== article.id && a.category === article.category)
+    .slice(0, 3);
+
+  // Fallback trending if not enough in same category
+  const fallbackTrending = trendingArticles.length > 0 
+    ? trendingArticles 
+    : allArticles.filter(a => a.id !== article.id).slice(0, 3);
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
@@ -64,9 +78,9 @@ export function Article() {
             </figcaption>
           </figure>
 
-          <article className="markdown-body text-lg text-gray-700 dark:text-gray-300">
+          <article className="markdown-body text-lg text-gray-700 dark:text-gray-300 space-y-6">
             {article.content.split('\n\n').map((para, i) => (
-              <p key={i}>{para}</p>
+              <p key={i} dangerouslySetInnerHTML={{ __html: para }} />
             ))}
           </article>
 
@@ -77,13 +91,12 @@ export function Article() {
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">
                 Platinum Entertainment Group is committed to sustainable growth in the alternative asset sector. Join us as we redefine high-yield hospitality in the ASEAN region.
               </p>
-              <a 
-                href="https://platinum-casino.example.org" 
-                target="_blank"
+              <Link 
+                to="/pro"
                 className="bg-primary text-white px-6 py-2 rounded font-bold text-sm hover:bg-success transition-all inline-flex items-center gap-2"
               >
-                Visit Platinum Group <ExternalLink size={14} />
-              </a>
+                Visit Platinum Group <ArrowRight size={14} />
+              </Link>
             </div>
           )}
 
@@ -105,9 +118,9 @@ export function Article() {
         {/* Right Column: Sidebar */}
         <aside className="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-10">
           <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6">
-            <h4 className="section-header mb-6">Trending in {article.category}</h4>
+            <h4 className="section-header mb-6">Trending Stories</h4>
             <div className="space-y-6">
-              {NEWS_DATA.filter(a => a.id !== article.id).slice(0, 3).map(a => (
+              {fallbackTrending.map(a => (
                 <Link key={a.id} to={`/news/${a.slug}`} className="group block">
                   <span className="text-[10px] font-bold text-success uppercase block mb-1">{a.category}</span>
                   <h5 className="font-bold text-sm leading-tight group-hover:text-success transition-colors">{a.title}</h5>

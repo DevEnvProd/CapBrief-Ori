@@ -2,6 +2,8 @@ import { MarketWidget, NewsCard } from '../components/Cards';
 import { NEWS_DATA, MARKET_SUMMARY } from '../data/mock';
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
 import { TrendingUp, TrendingDown, Info, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils';
 
 const INDEX_HISTORICAL = [
   { time: '9:00', price: 1610 },
@@ -178,9 +180,9 @@ export function MarketDataPage() {
              <Info size={24} className="text-success mb-4" />
              <h4 className="text-lg font-bold mb-2">Investment Partner</h4>
              <p className="text-white/60 text-xs mb-6">Platinum Group offers exclusive insights into the gaming and premium lifestyle sector performance in Malaysia.</p>
-             <a href="https://platinum-casino.example.org" target="_blank" className="flex items-center justify-between text-xs font-bold border-b border-white/20 pb-2 hover:border-success transition-all group">
+             <Link to="/pro" className="flex items-center justify-between text-xs font-bold border-b border-white/20 pb-2 hover:border-success transition-all group">
                 PLATINUM LIFESTYLE PORTFOLIO <ExternalLink size={14} className="group-hover:translate-x-1 transition-transform" />
-             </a>
+             </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
+import { News } from './pages/News';
 import { Article } from './pages/Article';
 import { Sectors } from './pages/Sectors';
 import { MarketDataPage } from './pages/MarketData';
@@ -12,7 +13,7 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/news" element={<Home />} />
+          <Route path="/news" element={<News />} />
           <Route path="/news/:slug" element={<Article />} />
           <Route path="/sectors/:sector" element={<Sectors />} />
           <Route path="/market-data" element={<MarketDataPage />} />

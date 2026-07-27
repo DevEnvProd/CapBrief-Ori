@@ -1,6 +1,8 @@
 {
-  "name": "CAPITAL BRIEF",
-  "description": "Premium Malaysian financial news, market intelligence, and economic analysis briefing.",
+  "name": "Capital Brief",
+  "description": "Capital Brief is premium Malaysian financial news, market intelligence, and economic analysis briefing.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

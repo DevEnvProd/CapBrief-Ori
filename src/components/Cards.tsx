@@ -6,6 +6,7 @@ import { NewsArticle } from '../data/mock';
 interface NewsCardProps {
   article: NewsArticle;
   variant?: 'large' | 'compact' | 'featured';
+  key?: any;
 }
 
 export function NewsCard({ article, variant = 'large' }: NewsCardProps) {

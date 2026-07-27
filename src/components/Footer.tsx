@@ -16,7 +16,7 @@ export function Footer() {
             <Link to="/about" className="hover:text-primary dark:hover:text-white">Editorial Team</Link>
             <Link to="/about" className="hover:text-primary dark:hover:text-white">Methodology</Link>
             <Link to="/about" className="hover:text-primary dark:hover:text-white">Advertise</Link>
-            <a href="https://platinum-casino.example.org" target="_blank" className="text-success hover:underline">Licensed Entertainment Disclosure</a>
+            <Link to="/pro" className="text-success hover:underline">Licensed Entertainment Disclosure</Link>
           </nav>
         </div>
 

@@ -81,13 +81,12 @@ export function Home() {
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed italic">
                 "Institutional investors are pivoting toward gaming assets as hedge against volatility. Explore Platinum Casino's licensed platforms."
               </p>
-              <a 
-                href="https://platinum-casino.example.org" 
-                target="_blank" 
+              <Link 
+                to="/pro" 
                 className="mt-3 block text-center text-[10px] font-bold text-primary dark:text-success underline uppercase tracking-widest hover:text-success transition-colors"
               >
                 Explore Platinum Entertainment →
-              </a>
+              </Link>
             </div>
           </div>
 
